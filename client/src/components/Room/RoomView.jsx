@@ -134,6 +134,7 @@ class RoomView extends React.Component {
   getPlaylist() {
     return axios.get(`/playlist/${this.props.match.params.roomId}`)
       .then(({ data }) => {
+        // const sortedList = [data.videos[0]].concat(this.sortPlaylist(data.videos.slice(1)));
         const sortedList = this.sortPlaylist(data.videos);
         this.setState({
           playlist: sortedList,
@@ -156,6 +157,7 @@ class RoomView extends React.Component {
       .then(({ data }) => {
         const currentTime = Date.now();
         const timeLapsed = moment.duration(moment(currentTime).diff(data.start)).asSeconds();
+        // const sortedList = [data.videos[0]].concat(this.sortPlaylist(data.videos.slice(1)));
         const sortedList = this.sortPlaylist(data.videos);
         this.setState({
           playlist: sortedList,
